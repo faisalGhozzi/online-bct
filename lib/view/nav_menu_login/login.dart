@@ -97,7 +97,7 @@ class _LoginState extends State<Login>{
                   )
                 ),
                 onPressed: () {
-                
+                  Navigator.pushNamed(context, '/home');
                 },
                 child: const Text("Connecter"), 
               ),
