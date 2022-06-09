@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:online_bct/reusable_functions/call_number.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-_callNumber(String number) async {
-  String num = 'tel:$number';
-  if (await canLaunchUrlString(num)){
-    await launchUrlString(num);
-  }else{
-    throw 'Impossible d\'appeler ce numéro'; 
-  }
-}
+
+// _callNumber(String number) async {
+//   String num = 'tel:$number';
+//   if (await canLaunchUrlString(num)){
+//     await launchUrlString(num);
+//   }else{
+//     throw 'Impossible d\'appeler ce numéro'; 
+//   }
+// }
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
+  CallNumber _callNumber = CallNumber();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -53,16 +55,16 @@ class _ContactState extends State<Contact> {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: ElevatedButton.icon(onPressed: () => _callNumber("71122387"), 
+                child: ElevatedButton.icon(onPressed: () => _callNumber.callThisNumber("71122387"), 
                 label: const Align(alignment: Alignment.centerLeft, child: Text("\t\t71 122 387")), icon: const Icon(Icons.phone_outlined),)
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: ElevatedButton.icon(onPressed: () => _callNumber("71122319"), label: const Align(alignment: Alignment.centerLeft, child: Text("\t\t71 122 319")), icon: const Icon(Icons.phone_outlined),)
+                child: ElevatedButton.icon(onPressed: () => _callNumber.callThisNumber("71122319"), label: const Align(alignment: Alignment.centerLeft, child: Text("\t\t71 122 319")), icon: const Icon(Icons.phone_outlined),)
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: ElevatedButton.icon(onPressed: () => _callNumber("71122324"), label: const Align(alignment: Alignment.centerLeft, child: Text("\t\t71 122 324")), icon: const Icon(Icons.phone_outlined),)
+                child: ElevatedButton.icon(onPressed: () => _callNumber.callThisNumber("71122324"), label: const Align(alignment: Alignment.centerLeft, child: Text("\t\t71 122 324")), icon: const Icon(Icons.phone_outlined),)
               ),
               const SizedBox(
                 height: 40,
